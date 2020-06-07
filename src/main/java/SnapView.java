@@ -5,6 +5,8 @@ import javax.swing.*;
 public class SnapView {
     private JPanel panel;
     private JButton camera;
+    private JTextArea selectedCode;
+    private JScrollPane scroll;
 
     public SnapView(ToolWindow toolWindow) {
         camera.addActionListener(e -> saveFile());
