@@ -11,12 +11,16 @@
 
     <depends>com.intellij.modules.platform</depends>
 
-    <extensions defaultExtensionNs="com.intellij">
-        <!-- Add your extensions here -->
-        <toolWindow id="code-snap" anchor="right"/>
-    </extensions>
+<!--    <extensions defaultExtensionNs="com.intellij">-->
+<!--        &lt;!&ndash; Add your extensions here &ndash;&gt;-->
+<!--        <toolWindow id="code-snap" anchor="right" factoryClass="ToolWindow"/>-->
+<!--    </extensions>-->
 
     <actions>
         <!-- Add your actions here -->
+        <action id="SelectorAction" class="SelectorAction" text="Code Snapshot"
+                description="Creates snapshot for your code">
+            <add-to-group group-id="EditorPopupMenu" anchor="last"/>
+        </action>
     </actions>
 </idea-plugin>
