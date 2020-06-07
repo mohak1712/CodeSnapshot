@@ -11,10 +11,10 @@
 
     <depends>com.intellij.modules.platform</depends>
 
-<!--    <extensions defaultExtensionNs="com.intellij">-->
-<!--        &lt;!&ndash; Add your extensions here &ndash;&gt;-->
-<!--        <toolWindow id="code-snap" anchor="right" factoryClass="ToolWindow"/>-->
-<!--    </extensions>-->
+    <extensions defaultExtensionNs="com.intellij">
+        <!-- Add your extensions here -->
+        <toolWindow id="CodeSnapshot" anchor="right" factoryClass="SnapToolWindow"/>
+    </extensions>
 
     <actions>
         <!-- Add your actions here -->
