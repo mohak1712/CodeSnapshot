@@ -7,6 +7,8 @@ import com.intellij.openapi.wm.ToolWindowManager;
 import com.intellij.ui.content.Content;
 import org.jetbrains.annotations.NotNull;
 
+import javax.swing.*;
+
 public class SelectorAction extends AnAction {
     @Override
     public void actionPerformed(@NotNull AnActionEvent e) {
@@ -15,13 +17,16 @@ public class SelectorAction extends AnAction {
         ToolWindow toolWindow = ToolWindowManager.getInstance(e.getProject()).getToolWindow("CodeSnapshot");
 
         Content content = toolWindow.getContentManager().getContent(0);
-        SnapView snapView = (SnapView) content.getComponent();
+        JPanel component = (JPanel) content.getComponent();
 
         if (!toolWindow.isVisible()) {
             toolWindow.show(() -> {
             });
         }
-        snapView.updateSelectedText(selectedText);
+
+        JScrollPane scrollPane = (JScrollPane) component.getComponent(0);
+        JTextArea textArea = (JTextArea) scrollPane.getViewport().getView();
+        textArea.setText(selectedText);
     }
 
     @Override

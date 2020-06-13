@@ -1,6 +1,6 @@
 import javax.swing.*;
 
-public class SnapView extends JComponent {
+public class SnapView {
     private JPanel panel;
     private JButton camera;
     private JTextArea selectedCode;
@@ -14,11 +14,7 @@ public class SnapView extends JComponent {
         System.out.println("Save file on click");
     }
 
-    public void updateSelectedText(String text) {
-        selectedCode.setText(text);
-    }
-
-    public SnapView getComponent() {
-        return this;
+    public JPanel getComponent() {
+        return panel;
     }
 }
