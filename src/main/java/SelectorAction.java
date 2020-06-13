@@ -4,6 +4,7 @@ import com.intellij.openapi.actionSystem.PlatformDataKeys;
 import com.intellij.openapi.editor.Editor;
 import com.intellij.openapi.wm.ToolWindow;
 import com.intellij.openapi.wm.ToolWindowManager;
+import com.intellij.ui.content.Content;
 import org.jetbrains.annotations.NotNull;
 
 public class SelectorAction extends AnAction {
@@ -13,9 +14,14 @@ public class SelectorAction extends AnAction {
         String selectedText = edit.getSelectionModel().getSelectedText();
         ToolWindow toolWindow = ToolWindowManager.getInstance(e.getProject()).getToolWindow("CodeSnapshot");
 
-        if (!toolWindow.isVisible())
+        Content content = toolWindow.getContentManager().getContent(0);
+        SnapView snapView = (SnapView) content.getComponent();
+
+        if (!toolWindow.isVisible()) {
             toolWindow.show(() -> {
             });
+        }
+        snapView.updateSelectedText(selectedText);
     }
 
     @Override

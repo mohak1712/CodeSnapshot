@@ -8,7 +8,7 @@ public class SnapToolWindow implements ToolWindowFactory {
 
     @Override
     public void createToolWindowContent(@NotNull Project project, com.intellij.openapi.wm.@NotNull ToolWindow toolWindow) {
-        SnapView snapView = new SnapView(toolWindow);
+        SnapView snapView = new SnapView();
         ContentFactory instance = ContentFactory.SERVICE.getInstance();
         Content content = instance.createContent(snapView.getComponent(), "", false);
         toolWindow.getContentManager().addContent(content);

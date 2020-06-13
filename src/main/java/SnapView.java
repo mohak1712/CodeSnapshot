@@ -1,14 +1,12 @@
-import com.intellij.openapi.wm.ToolWindow;
-
 import javax.swing.*;
 
-public class SnapView {
+public class SnapView extends JComponent {
     private JPanel panel;
     private JButton camera;
     private JTextArea selectedCode;
     private JScrollPane scroll;
 
-    public SnapView(ToolWindow toolWindow) {
+    public SnapView() {
         camera.addActionListener(e -> saveFile());
     }
 
@@ -16,7 +14,11 @@ public class SnapView {
         System.out.println("Save file on click");
     }
 
-    public JPanel getComponent() {
-        return panel;
+    public void updateSelectedText(String text) {
+        selectedCode.setText(text);
+    }
+
+    public SnapView getComponent() {
+        return this;
     }
 }

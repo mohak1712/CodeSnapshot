@@ -26,6 +26,7 @@
           <autoscrolls value="false"/>
           <enabled value="true"/>
           <focusable value="false"/>
+          <foreground color="-10853957"/>
           <horizontalScrollBarPolicy value="31"/>
           <name value="scroll"/>
           <opaque value="true"/>
@@ -37,8 +38,10 @@
           <component id="55d3f" class="javax.swing.JTextArea" binding="selectedCode">
             <constraints/>
             <properties>
+              <background color="-11913142"/>
               <editable value="false"/>
               <enabled value="true"/>
+              <foreground color="-16777216"/>
               <lineWrap value="true"/>
               <margin top="10" left="10" bottom="10" right="10"/>
               <text value="Test"/>
