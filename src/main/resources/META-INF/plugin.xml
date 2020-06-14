@@ -19,7 +19,7 @@
 
     <actions>
         <!-- Add your actions here -->
-        <action id="SelectorAction" class="SelectorAction" text="Code Snapshot"
+        <action id="SelectorAction" class="SelectionHandler" text="Code Snapshot"
                 description="Creates snapshot for your code">
             <add-to-group group-id="EditorPopupMenu" anchor="last"/>
         </action>
