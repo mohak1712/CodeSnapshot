@@ -8,6 +8,7 @@ import com.intellij.ui.content.Content;
 import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
+import java.awt.*;
 
 public class SelectorAction extends AnAction {
     @Override
@@ -28,6 +29,8 @@ public class SelectorAction extends AnAction {
         JTextArea textArea = (JTextArea) scrollPane.getViewport().getView();
         textArea.setBackground(edit.getColorsScheme().getDefaultBackground());
         textArea.setText(selectedText);
+        textArea.setFont(new Font(edit.getColorsScheme().getEditorFontName(), Font.PLAIN,
+                edit.getColorsScheme().getEditorFontSize()));
     }
 
     @Override
