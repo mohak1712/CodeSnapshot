@@ -26,6 +26,7 @@ public class SelectorAction extends AnAction {
 
         JScrollPane scrollPane = (JScrollPane) component.getComponent(0);
         JTextArea textArea = (JTextArea) scrollPane.getViewport().getView();
+        textArea.setBackground(edit.getColorsScheme().getDefaultBackground());
         textArea.setText(selectedText);
     }
 

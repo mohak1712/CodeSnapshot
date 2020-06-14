@@ -26,6 +26,7 @@ public class SelectionHandler implements EditorMouseMotionListener {
         JPanel component = (JPanel) content.getComponent();
         JScrollPane scrollPane = (JScrollPane) component.getComponent(0);
         JTextArea textArea = (JTextArea) scrollPane.getViewport().getView();
+        textArea.setBackground(e.getEditor().getColorsScheme().getDefaultBackground());
         textArea.setText(selectedText);
     }
 }
