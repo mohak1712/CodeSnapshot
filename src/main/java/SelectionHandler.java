@@ -27,7 +27,7 @@ public class SelectionHandler extends AnAction implements EditorMouseMotionListe
             return;
         }
 
-        JTextArea textArea = getTextArea(editor, toolWindow);
+        JTextArea textArea = getTextArea(toolWindow);
         formatText(textArea, editor, selectedText);
     }
 
@@ -42,7 +42,7 @@ public class SelectionHandler extends AnAction implements EditorMouseMotionListe
             });
         }
 
-        JTextArea textArea = getTextArea(editor, toolWindow);
+        JTextArea textArea = getTextArea(toolWindow);
         formatText(textArea, editor, selectedText);
     }
 
@@ -57,7 +57,7 @@ public class SelectionHandler extends AnAction implements EditorMouseMotionListe
                 && edit.getSelectionModel().getSelectedText().length() > 0;
     }
 
-    private JTextArea getTextArea(Editor editor, ToolWindow toolWindow) {
+    private JTextArea getTextArea(ToolWindow toolWindow) {
         Content content = toolWindow.getContentManager().getContent(0);
         JPanel rootPanel = (JPanel) content.getComponent();
         JScrollPane scrollPane = (JScrollPane) rootPanel.getComponent(0);
