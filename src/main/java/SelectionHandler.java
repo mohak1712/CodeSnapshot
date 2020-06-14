@@ -27,13 +27,14 @@ public class SelectionHandler extends AnAction implements EditorMouseMotionListe
             return;
         }
 
-        update(editor, selectedText, toolWindow);
+        JTextArea textArea = getTextArea(editor, toolWindow);
+        formatText(textArea, editor, selectedText);
     }
 
     @Override
     public void actionPerformed(@NotNull AnActionEvent e) {
-        Editor edit = e.getData(PlatformDataKeys.EDITOR);
-        String selectedText = edit.getSelectionModel().getSelectedText();
+        Editor editor = e.getData(PlatformDataKeys.EDITOR);
+        String selectedText = editor.getSelectionModel().getSelectedText();
         ToolWindow toolWindow = ToolWindowManager.getInstance(e.getProject()).getToolWindow("CodeSnapshot");
 
         if (!toolWindow.isVisible()) {
@@ -41,7 +42,8 @@ public class SelectionHandler extends AnAction implements EditorMouseMotionListe
             });
         }
 
-        update(edit, selectedText, toolWindow);
+        JTextArea textArea = getTextArea(editor, toolWindow);
+        formatText(textArea, editor, selectedText);
     }
 
     @Override
@@ -55,11 +57,16 @@ public class SelectionHandler extends AnAction implements EditorMouseMotionListe
                 && edit.getSelectionModel().getSelectedText().length() > 0;
     }
 
-    private void update(Editor editor, String selectedText, ToolWindow toolWindow) {
+    private JTextArea getTextArea(Editor editor, ToolWindow toolWindow) {
         Content content = toolWindow.getContentManager().getContent(0);
-        JPanel component = (JPanel) content.getComponent();
-        JScrollPane scrollPane = (JScrollPane) component.getComponent(0);
-        JTextArea textArea = (JTextArea) scrollPane.getViewport().getView();
+        JPanel rootPanel = (JPanel) content.getComponent();
+        JScrollPane scrollPane = (JScrollPane) rootPanel.getComponent(0);
+        JPanel dataPanel = (JPanel) scrollPane.getViewport().getView();
+        dataPanel.setBackground(editor.getColorsScheme().getDefaultBackground());
+        return (JTextArea) dataPanel.getComponent(0);
+    }
+
+    private void formatText(JTextArea textArea, Editor editor, String selectedText) {
         textArea.setBackground(editor.getColorsScheme().getDefaultBackground());
         textArea.setText(selectedText);
         textArea.setFont(new Font(editor.getColorsScheme().getEditorFontName(), Font.PLAIN,
