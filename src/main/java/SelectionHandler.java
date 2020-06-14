@@ -61,9 +61,7 @@ public class SelectionHandler extends AnAction implements EditorMouseMotionListe
         Content content = toolWindow.getContentManager().getContent(0);
         JPanel rootPanel = (JPanel) content.getComponent();
         JScrollPane scrollPane = (JScrollPane) rootPanel.getComponent(0);
-        JPanel dataPanel = (JPanel) scrollPane.getViewport().getView();
-        dataPanel.setBackground(editor.getColorsScheme().getDefaultBackground());
-        return (JTextArea) dataPanel.getComponent(0);
+        return (JTextArea) scrollPane.getViewport().getView();
     }
 
     private void formatText(JTextArea textArea, Editor editor, String selectedText) {
