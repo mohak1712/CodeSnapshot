@@ -5,7 +5,6 @@ public class SnapView {
     private JButton camera;
     private JTextArea selectedCode;
     private JScrollPane scroll;
-    private JButton color;
 
     public SnapView() {
         camera.addActionListener(e -> saveFile());
