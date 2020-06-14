@@ -38,13 +38,13 @@
           <component id="55d3f" class="javax.swing.JTextArea" binding="selectedCode">
             <constraints/>
             <properties>
-              <background color="-11913142"/>
+              <background color="-4805957"/>
               <editable value="false"/>
               <enabled value="true"/>
               <foreground color="-16777216"/>
               <lineWrap value="true"/>
               <margin top="10" left="10" bottom="10" right="10"/>
-              <text value="Test"/>
+              <text value=""/>
               <verifyInputWhenFocusTarget value="false"/>
             </properties>
           </component>
@@ -74,7 +74,9 @@
           <component id="ca18a" class="javax.swing.JButton" binding="color">
             <constraints/>
             <properties>
+              <focusable value="false"/>
               <icon value="color-palette.png"/>
+              <requestFocusEnabled value="false"/>
               <text value=""/>
             </properties>
           </component>
