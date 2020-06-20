@@ -64,10 +64,10 @@ public class SelectionHandler extends AnAction implements EditorMouseMotionListe
         return (JTextPane) scrollPane.getViewport().getView();
     }
 
-    private void formatText(JTextPane textArea, Editor editor, String selectedText) {
-        textArea.setBackground(editor.getColorsScheme().getDefaultBackground());
-        textArea.setText(selectedText);
-        textArea.setFont(new Font(editor.getColorsScheme().getEditorFontName(), Font.PLAIN,
+    private void formatText(JTextPane textPane, Editor editor, String selectedText) {
+        textPane.setBackground(editor.getColorsScheme().getDefaultBackground());
+        textPane.setText(selectedText);
+        textPane.setFont(new Font(editor.getColorsScheme().getEditorFontName(), Font.PLAIN,
                 editor.getColorsScheme().getEditorFontSize()));
     }
 }
