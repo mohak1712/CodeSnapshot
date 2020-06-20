@@ -27,7 +27,7 @@ public class SelectionHandler extends AnAction implements EditorMouseMotionListe
             return;
         }
 
-        JTextArea textArea = getTextArea(toolWindow);
+        JTextPane textArea = getTextPane(toolWindow);
         formatText(textArea, editor, selectedText);
     }
 
@@ -42,7 +42,7 @@ public class SelectionHandler extends AnAction implements EditorMouseMotionListe
             });
         }
 
-        JTextArea textArea = getTextArea(toolWindow);
+        JTextPane textArea = getTextPane(toolWindow);
         formatText(textArea, editor, selectedText);
     }
 
@@ -57,14 +57,14 @@ public class SelectionHandler extends AnAction implements EditorMouseMotionListe
                 && edit.getSelectionModel().getSelectedText().length() > 0;
     }
 
-    private JTextArea getTextArea(ToolWindow toolWindow) {
+    private JTextPane getTextPane(ToolWindow toolWindow) {
         Content content = toolWindow.getContentManager().getContent(0);
         JPanel rootPanel = (JPanel) content.getComponent();
         JScrollPane scrollPane = (JScrollPane) rootPanel.getComponent(0);
-        return (JTextArea) scrollPane.getViewport().getView();
+        return (JTextPane) scrollPane.getViewport().getView();
     }
 
-    private void formatText(JTextArea textArea, Editor editor, String selectedText) {
+    private void formatText(JTextPane textArea, Editor editor, String selectedText) {
         textArea.setBackground(editor.getColorsScheme().getDefaultBackground());
         textArea.setText(selectedText);
         textArea.setFont(new Font(editor.getColorsScheme().getEditorFontName(), Font.PLAIN,

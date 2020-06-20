@@ -5,7 +5,7 @@ import java.awt.*;
 public class SnapView {
     private JPanel panel;
     private JButton camera;
-    private JTextArea selectedCode;
+    private JTextPane selectedCode;
     private JScrollPane scroll;
 
     public SnapView() {

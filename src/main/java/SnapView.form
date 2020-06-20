@@ -38,18 +38,12 @@
           <size top="50" left="50" bottom="50" right="50"/>
         </border>
         <children>
-          <component id="55d3f" class="javax.swing.JTextArea" binding="selectedCode">
+          <component id="939f" class="javax.swing.JTextPane" binding="selectedCode">
             <constraints/>
             <properties>
-              <background color="-12828863"/>
+              <autoscrolls value="false"/>
+              <dragEnabled value="false"/>
               <editable value="false"/>
-              <enabled value="true"/>
-              <focusable value="false"/>
-              <foreground color="-16777216"/>
-              <lineWrap value="true"/>
-              <margin top="20" left="20" bottom="20" right="20"/>
-              <text value="ksdfkdfdsk"/>
-              <verifyInputWhenFocusTarget value="false"/>
             </properties>
           </component>
         </children>
