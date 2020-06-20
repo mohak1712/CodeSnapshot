@@ -1,4 +1,6 @@
 import javax.swing.*;
+import javax.swing.border.LineBorder;
+import java.awt.*;
 
 public class SnapView {
     private JPanel panel;
@@ -7,6 +9,9 @@ public class SnapView {
     private JScrollPane scroll;
 
     public SnapView() {
+        scroll.getVerticalScrollBar().setPreferredSize(new Dimension(0, 0));
+        scroll.setBorder(null);
+        selectedCode.setBorder(new LineBorder(selectedCode.getBackground(), 10, true));
         camera.addActionListener(e -> saveFile());
     }
 
