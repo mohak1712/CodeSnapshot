@@ -44,6 +44,8 @@
               <autoscrolls value="false"/>
               <dragEnabled value="false"/>
               <editable value="false"/>
+              <margin top="20" left="20" bottom="20" right="20"/>
+              <text value=""/>
             </properties>
           </component>
         </children>
