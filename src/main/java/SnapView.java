@@ -10,7 +10,7 @@ public class SnapView {
 
     public SnapView() {
         scroll.getVerticalScrollBar().setPreferredSize(new Dimension(0, 0));
-        scroll.setBorder(new LineBorder(Color.WHITE, 10, true));
+        scroll.setBorder(new LineBorder(Color.LIGHT_GRAY, 40, true));
         camera.addActionListener(e -> saveFile());
     }
 

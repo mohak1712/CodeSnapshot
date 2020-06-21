@@ -7,9 +7,12 @@ import com.intellij.openapi.editor.event.EditorMouseMotionListener;
 import com.intellij.openapi.wm.ToolWindow;
 import com.intellij.openapi.wm.ToolWindowManager;
 import com.intellij.ui.content.Content;
+import com.intellij.util.ui.JBUI;
 import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
+import javax.swing.text.Style;
+import javax.swing.text.StyleContext;
 import java.awt.*;
 
 public class SelectionHandler extends AnAction implements EditorMouseMotionListener {
@@ -65,7 +68,10 @@ public class SelectionHandler extends AnAction implements EditorMouseMotionListe
     }
 
     private void formatText(JTextPane textPane, Editor editor, String selectedText) {
+        textPane.setMargin(JBUI.insets(20));
         textPane.setBackground(editor.getColorsScheme().getDefaultBackground());
+        Style defaultStyle = StyleContext.getDefaultStyleContext().getStyle(StyleContext.DEFAULT_STYLE);
+        textPane.setCharacterAttributes(defaultStyle, true);
         textPane.setText(selectedText);
         textPane.setFont(new Font(editor.getColorsScheme().getEditorFontName(), Font.PLAIN,
                 editor.getColorsScheme().getEditorFontSize()));
