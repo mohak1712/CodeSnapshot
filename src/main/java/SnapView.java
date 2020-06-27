@@ -15,7 +15,10 @@ public class SnapView {
     }
 
     private void saveFile() {
-        System.out.println("Save file on click");
+        SaveAsDialog saveAsDialog = new SaveAsDialog();
+        if (saveAsDialog.showAndGet()) {
+            // ok was pressed
+        }
     }
 
     public JPanel getComponent() {
