@@ -1,26 +1,28 @@
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
+import com.intellij.openapi.actionSystem.LangDataKeys;
 import com.intellij.openapi.actionSystem.PlatformDataKeys;
 import com.intellij.openapi.editor.Editor;
 import com.intellij.openapi.editor.event.EditorMouseEvent;
 import com.intellij.openapi.editor.event.EditorMouseMotionListener;
 import com.intellij.openapi.wm.ToolWindow;
 import com.intellij.openapi.wm.ToolWindowManager;
+import com.intellij.psi.PsiDocumentManager;
+import com.intellij.psi.PsiFile;
+import com.intellij.ui.EditorTextField;
 import com.intellij.ui.content.Content;
-import com.intellij.util.ui.JBUI;
 import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
-import javax.swing.text.Style;
-import javax.swing.text.StyleContext;
-import java.awt.*;
 
 public class SelectionHandler extends AnAction implements EditorMouseMotionListener {
 
     @Override
     public void mouseDragged(@NotNull EditorMouseEvent e) {
         Editor editor = e.getEditor();
+        PsiFile psiFile = PsiDocumentManager.getInstance(editor.getProject()).getPsiFile(editor.getDocument());
         String selectedText = editor.getSelectionModel().getSelectedText();
+
         if (selectedText == null || selectedText.isEmpty()) {
             return;
         }
@@ -30,13 +32,15 @@ public class SelectionHandler extends AnAction implements EditorMouseMotionListe
             return;
         }
 
-        JTextPane textArea = getTextPane(toolWindow);
-        formatText(textArea, editor, selectedText);
+        EditorTextField codeView = getTextPane(toolWindow);
+        codeView.setText(selectedText);
+        codeView.setFileType(psiFile.getFileType());
     }
 
     @Override
     public void actionPerformed(@NotNull AnActionEvent e) {
         Editor editor = e.getData(PlatformDataKeys.EDITOR);
+        PsiFile psiFile = e.getData(LangDataKeys.PSI_FILE);
         String selectedText = editor.getSelectionModel().getSelectedText();
         ToolWindow toolWindow = ToolWindowManager.getInstance(e.getProject()).getToolWindow("CodeSnapshot");
 
@@ -45,8 +49,9 @@ public class SelectionHandler extends AnAction implements EditorMouseMotionListe
             });
         }
 
-        JTextPane textArea = getTextPane(toolWindow);
-        formatText(textArea, editor, selectedText);
+        EditorTextField codeView = getTextPane(toolWindow);
+        codeView.setText(selectedText);
+        codeView.setFileType(psiFile.getFileType());
     }
 
     @Override
@@ -60,20 +65,10 @@ public class SelectionHandler extends AnAction implements EditorMouseMotionListe
                 && edit.getSelectionModel().getSelectedText().length() > 0;
     }
 
-    private JTextPane getTextPane(ToolWindow toolWindow) {
+    private EditorTextField getTextPane(ToolWindow toolWindow) {
         Content content = toolWindow.getContentManager().getContent(0);
         JPanel rootPanel = (JPanel) content.getComponent();
         JScrollPane scrollPane = (JScrollPane) rootPanel.getComponent(0);
-        return (JTextPane) scrollPane.getViewport().getView();
-    }
-
-    private void formatText(JTextPane textPane, Editor editor, String selectedText) {
-        textPane.setMargin(JBUI.insets(20));
-        textPane.setBackground(editor.getColorsScheme().getDefaultBackground());
-        Style defaultStyle = StyleContext.getDefaultStyleContext().getStyle(StyleContext.DEFAULT_STYLE);
-        textPane.setCharacterAttributes(defaultStyle, true);
-        textPane.setText(selectedText);
-        textPane.setFont(new Font(editor.getColorsScheme().getEditorFontName(), Font.PLAIN,
-                editor.getColorsScheme().getEditorFontSize()));
+        return (EditorTextField) scrollPane.getViewport().getView();
     }
 }

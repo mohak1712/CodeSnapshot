@@ -2,6 +2,8 @@ import com.intellij.openapi.fileChooser.FileChooserFactory;
 import com.intellij.openapi.fileChooser.FileSaverDescriptor;
 import com.intellij.openapi.fileChooser.FileSaverDialog;
 import com.intellij.openapi.project.Project;
+import com.intellij.ui.EditorTextField;
+import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
 import javax.swing.border.LineBorder;
@@ -10,11 +12,14 @@ import java.awt.*;
 public class SnapView {
     private JPanel panel;
     private JButton camera;
-    private JTextPane selectedCode;
     private JScrollPane scroll;
 
-    public SnapView() {
+    public SnapView(@NotNull Project project) {
+        EditorTextField codeView = new EditorTextField("", project, null);
+        codeView.setEnabled(false);
+        codeView.setOneLineMode(false);
         scroll.getVerticalScrollBar().setPreferredSize(new Dimension(0, 0));
+        scroll.setViewportView(codeView);
         scroll.setBorder(new LineBorder(Color.LIGHT_GRAY, 40, true));
         camera.addActionListener(e -> saveFile());
     }

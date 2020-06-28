@@ -37,18 +37,7 @@
         <border type="none">
           <size top="50" left="50" bottom="50" right="50"/>
         </border>
-        <children>
-          <component id="939f" class="javax.swing.JTextPane" binding="selectedCode">
-            <constraints/>
-            <properties>
-              <autoscrolls value="false"/>
-              <dragEnabled value="false"/>
-              <editable value="false"/>
-              <margin top="20" left="20" bottom="0" right="20"/>
-              <text value=""/>
-            </properties>
-          </component>
-        </children>
+        <children/>
       </scrollpane>
       <component id="558fb" class="javax.swing.JButton" binding="camera">
         <constraints>
