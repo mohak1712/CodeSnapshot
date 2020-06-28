@@ -2,7 +2,6 @@ import com.intellij.openapi.fileChooser.FileChooserFactory;
 import com.intellij.openapi.fileChooser.FileSaverDescriptor;
 import com.intellij.openapi.fileChooser.FileSaverDialog;
 import com.intellij.openapi.project.Project;
-import com.intellij.ui.EditorTextField;
 import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
@@ -15,9 +14,7 @@ public class SnapView {
     private JScrollPane scroll;
 
     public SnapView(@NotNull Project project) {
-        EditorTextField codeView = new EditorTextField("", project, null);
-        codeView.setEnabled(false);
-        codeView.setOneLineMode(false);
+        CustomTextEditor codeView = new CustomTextEditor("", project, null);
         scroll.getVerticalScrollBar().setPreferredSize(new Dimension(0, 0));
         scroll.setViewportView(codeView);
         scroll.setBorder(new LineBorder(Color.LIGHT_GRAY, 40, true));

@@ -33,6 +33,10 @@ public class SelectionHandler extends AnAction implements EditorMouseMotionListe
         }
 
         EditorTextField codeView = getTextPane(toolWindow);
+        updateView(psiFile, selectedText, codeView);
+    }
+
+    private void updateView(PsiFile psiFile, String selectedText, EditorTextField codeView) {
         codeView.setText(selectedText);
         codeView.setFileType(psiFile.getFileType());
     }
@@ -50,8 +54,7 @@ public class SelectionHandler extends AnAction implements EditorMouseMotionListe
         }
 
         EditorTextField codeView = getTextPane(toolWindow);
-        codeView.setText(selectedText);
-        codeView.setFileType(psiFile.getFileType());
+        updateView(psiFile, selectedText, codeView);
     }
 
     @Override
