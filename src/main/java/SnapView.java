@@ -1,3 +1,8 @@
+import com.intellij.openapi.fileChooser.FileChooserFactory;
+import com.intellij.openapi.fileChooser.FileSaverDescriptor;
+import com.intellij.openapi.fileChooser.FileSaverDialog;
+import com.intellij.openapi.project.Project;
+
 import javax.swing.*;
 import javax.swing.border.LineBorder;
 import java.awt.*;
@@ -15,10 +20,11 @@ public class SnapView {
     }
 
     private void saveFile() {
-        SaveAsDialog saveAsDialog = new SaveAsDialog();
-        if (saveAsDialog.showAndGet()) {
-            // ok was pressed
-        }
+        FileSaverDescriptor fileSaverDescriptor = new FileSaverDescriptor("Code Snapshot", "Saves this code as image",
+                "jpg", "png");
+        FileSaverDialog saveFileDialog = FileChooserFactory.getInstance()
+                .createSaveFileDialog(fileSaverDescriptor, (Project) null);
+        saveFileDialog.save(null, "code");
     }
 
     public JPanel getComponent() {
