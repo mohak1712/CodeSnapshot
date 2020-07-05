@@ -1,3 +1,4 @@
+import com.intellij.openapi.editor.EditorSettings;
 import com.intellij.openapi.editor.event.EditorMouseEvent;
 import com.intellij.openapi.editor.event.EditorMouseListener;
 import com.intellij.openapi.editor.event.EditorMouseMotionListener;
@@ -6,6 +7,10 @@ import com.intellij.openapi.fileTypes.FileType;
 import com.intellij.openapi.project.Project;
 import com.intellij.ui.EditorTextField;
 import org.jetbrains.annotations.NotNull;
+
+import javax.swing.*;
+import javax.swing.border.LineBorder;
+import java.awt.*;
 
 public class CustomTextEditor extends EditorTextField {
 
@@ -20,6 +25,16 @@ public class CustomTextEditor extends EditorTextField {
         editor.setInsertMode(false);
         editor.setCaretEnabled(false);
         editor.setViewer(true);
+        editor.setVerticalScrollbarVisible(true);
+
+        JScrollPane scrollPane = editor.getScrollPane();
+        scrollPane.getVerticalScrollBar().setPreferredSize(new Dimension(0, 0));
+        scrollPane.setBorder(new LineBorder(Color.LIGHT_GRAY, 40, true));
+
+        EditorSettings settings = editor.getSettings();
+        settings.setUseSoftWraps(true);
+        editor.reinitSettings();
+
         editor.addEditorMouseMotionListener(new EditorMouseMotionListener() {
             @Override
             public void mouseMoved(@NotNull EditorMouseEvent e) {

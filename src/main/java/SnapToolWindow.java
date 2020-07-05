@@ -25,9 +25,7 @@ public class SnapToolWindow implements ToolWindowFactory {
 
     private EditorTextField getTextPane(ToolWindow toolWindow) {
         Content content = toolWindow.getContentManager().getContent(0);
-        JPanel rootPanel = (JPanel) content.getComponent();
-        JScrollPane scrollPane = (JScrollPane) rootPanel.getComponent(0);
-        return (EditorTextField) scrollPane.getViewport().getView();
+        return (EditorTextField) content.getComponent();
     }
 
     @Override

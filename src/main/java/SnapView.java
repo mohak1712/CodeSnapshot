@@ -5,20 +5,13 @@ import com.intellij.openapi.project.Project;
 import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
-import javax.swing.border.LineBorder;
-import java.awt.*;
 
 public class SnapView {
-    private JPanel panel;
-    private JButton camera;
-    private JScrollPane scroll;
+
+    private CustomTextEditor codeView;
 
     public SnapView(@NotNull Project project) {
-        CustomTextEditor codeView = new CustomTextEditor("", project, null);
-        scroll.getVerticalScrollBar().setPreferredSize(new Dimension(0, 0));
-        scroll.setViewportView(codeView);
-        scroll.setBorder(new LineBorder(Color.LIGHT_GRAY, 40, true));
-        camera.addActionListener(e -> saveFile());
+        codeView = new CustomTextEditor("", project, null);
     }
 
     private void saveFile() {
@@ -30,6 +23,6 @@ public class SnapView {
     }
 
     public JPanel getComponent() {
-        return panel;
+        return codeView;
     }
 }
