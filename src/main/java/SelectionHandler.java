@@ -13,8 +13,6 @@ import com.intellij.ui.EditorTextField;
 import com.intellij.ui.content.Content;
 import org.jetbrains.annotations.NotNull;
 
-import javax.swing.*;
-
 public class SelectionHandler extends AnAction implements EditorMouseMotionListener {
 
     @Override
