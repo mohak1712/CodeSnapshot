@@ -35,7 +35,15 @@ public class SelectionHandler extends AnAction implements EditorMouseMotionListe
     }
 
     private void updateView(PsiFile psiFile, String selectedText, EditorTextField codeView) {
-        codeView.setText(selectedText);
+        if (selectedText.startsWith("\n") && selectedText.endsWith("\n"))
+            codeView.setText(selectedText);
+        else if (selectedText.startsWith("\n"))
+            codeView.setText(selectedText + "\n");
+        else if (selectedText.endsWith("\n"))
+            codeView.setText("\n" + selectedText);
+        else
+            codeView.setText("\n" + selectedText + "\n");
+
         codeView.setFileType(psiFile.getFileType());
     }
 
