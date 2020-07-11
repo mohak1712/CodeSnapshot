@@ -32,6 +32,7 @@ public class CustomTextEditor extends EditorTextField {
         editor.setOneLineMode(false);
         editor.setInsertMode(false);
         editor.setCaretEnabled(false);
+        editor.getGutter().registerTextAnnotation(new GutterTextAnnotation(this));
         editor.setViewer(true);
         editor.setVerticalScrollbarVisible(true);
     }
