@@ -10,6 +10,8 @@ import com.intellij.openapi.wm.ToolWindowManager;
 import com.intellij.psi.PsiDocumentManager;
 import com.intellij.psi.PsiFile;
 import com.intellij.ui.EditorTextField;
+import com.intellij.ui.components.JBPanel;
+import com.intellij.ui.components.JBScrollPane;
 import com.intellij.ui.content.Content;
 import org.jetbrains.annotations.NotNull;
 
@@ -76,6 +78,8 @@ public class SelectionHandler extends AnAction implements EditorMouseMotionListe
 
     private EditorTextField getTextPane(ToolWindow toolWindow) {
         Content content = toolWindow.getContentManager().getContent(0);
-        return (EditorTextField) content.getComponent();
+        JBScrollPane scrollPane = (JBScrollPane) content.getComponent();
+        JBPanel dataPanel = (JBPanel) scrollPane.getViewport().getView();
+        return (EditorTextField) dataPanel.getComponent(0);
     }
 }

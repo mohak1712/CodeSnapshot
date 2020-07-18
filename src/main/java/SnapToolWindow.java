@@ -2,11 +2,11 @@ import com.intellij.openapi.project.Project;
 import com.intellij.openapi.wm.ToolWindow;
 import com.intellij.openapi.wm.ToolWindowFactory;
 import com.intellij.ui.EditorTextField;
+import com.intellij.ui.components.JBPanel;
+import com.intellij.ui.components.JBScrollPane;
 import com.intellij.ui.content.Content;
 import com.intellij.ui.content.ContentFactory;
 import org.jetbrains.annotations.NotNull;
-
-import javax.swing.*;
 
 public class SnapToolWindow implements ToolWindowFactory {
 
@@ -25,7 +25,9 @@ public class SnapToolWindow implements ToolWindowFactory {
 
     private EditorTextField getTextPane(ToolWindow toolWindow) {
         Content content = toolWindow.getContentManager().getContent(0);
-        return (EditorTextField) content.getComponent();
+        JBScrollPane scrollPane = (JBScrollPane) content.getComponent();
+        JBPanel dataPanel = (JBPanel) scrollPane.getViewport().getView();
+        return (EditorTextField) dataPanel.getComponent(0);
     }
 
     @Override
