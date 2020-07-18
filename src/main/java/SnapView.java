@@ -10,6 +10,8 @@ import org.jetbrains.annotations.NotNull;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.io.IOException;
 
 public class SnapView {
@@ -21,32 +23,29 @@ public class SnapView {
         codeView = new CustomTextEditor("", project, null);
         JBPanel panel = new JBPanel(verticalLayout);
         panel.add(codeView);
-        panel.add(saveButton());
+        panel.add(saveAsLabel());
         panel.withBackground(Color.LIGHT_GRAY);
         scrollPane = new JBScrollPane(panel);
         scrollPane.getVerticalScrollBar().setPreferredSize(new Dimension(0, 0));
         scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
     }
 
-    private Component saveButton() {
-        JButton saveAsButton = new JButton();
-        saveAsButton.setFocusable(false);
-        saveAsButton.setRolloverEnabled(true);
-        saveAsButton.setBackground(Color.LIGHT_GRAY);
-        saveAsButton.addActionListener(e -> saveFile());
-        saveAsButton.setIcon(icon("camera_initial.png"));
-        saveAsButton.setRolloverIcon(icon("camera_clicked.png"));
-        return saveAsButton;
-    }
-
-    private ImageIcon icon(String imagePath) {
+    private Component saveAsLabel() {
         try {
-            Image img = ImageIO.read(getClass().getResource(imagePath));
-            return new ImageIcon(img);
+            Image img = ImageIO.read(getClass().getResource("camera.png"));
+            JLabel saveAsLabel = new JLabel(new ImageIcon(img));
+            saveAsLabel.addMouseListener(new MouseAdapter() {
+                @Override
+                public void mouseClicked(MouseEvent e) {
+                    saveFile();
+                }
+            });
+
+            return saveAsLabel;
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return new ImageIcon();
+        return new JLabel();
     }
 
     private void saveFile() {
