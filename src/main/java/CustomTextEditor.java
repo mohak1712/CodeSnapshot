@@ -36,7 +36,7 @@ public class CustomTextEditor extends EditorTextField {
     private void setupScroller(EditorEx editor) {
         JScrollPane scrollPane = editor.getScrollPane();
         scrollPane.getVerticalScrollBar().setPreferredSize(new Dimension(0, 0));
-        scrollPane.setBorder(new LineBorder(Color.LIGHT_GRAY, 40, true));
+        scrollPane.setBorder(new LineBorder(Color.LIGHT_GRAY, 10, false));
     }
 
     private void setupSettings(EditorEx editor) {
