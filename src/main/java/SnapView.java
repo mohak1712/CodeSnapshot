@@ -32,9 +32,22 @@ public class SnapView {
 
     private Component saveAsLabel() {
         try {
-            Image img = ImageIO.read(getClass().getResource("camera.png"));
-            JLabel saveAsLabel = new JLabel(new ImageIcon(img));
+            Image cameraInitialState = ImageIO.read(getClass().getResource("camera_initial.png"));
+            Image cameraFinalState = ImageIO.read(getClass().getResource("camera_final.png"));
+            JLabel saveAsLabel = new JLabel(new ImageIcon(cameraInitialState));
             saveAsLabel.addMouseListener(new MouseAdapter() {
+                @Override
+                public void mouseEntered(MouseEvent e) {
+                    super.mouseEntered(e);
+                    saveAsLabel.setIcon(new ImageIcon(cameraFinalState));
+                }
+
+                @Override
+                public void mouseExited(MouseEvent e) {
+                    super.mouseExited(e);
+                    saveAsLabel.setIcon(new ImageIcon(cameraInitialState));
+                }
+
                 @Override
                 public void mouseClicked(MouseEvent e) {
                     saveFile();
