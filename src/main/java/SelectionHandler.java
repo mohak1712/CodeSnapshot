@@ -32,8 +32,9 @@ public class SelectionHandler extends AnAction implements EditorMouseMotionListe
             return;
         }
 
-        EditorTextField codeView = getTextPane(toolWindow);
-        updateView(psiFile, selectedText, codeView);
+        JBPanel panel = getPanel(toolWindow);
+        updateUi(panel);
+        updateView(psiFile, selectedText, (EditorTextField) panel.getComponent(1));
     }
 
     private void updateView(PsiFile psiFile, String selectedText, EditorTextField codeView) {
@@ -61,8 +62,14 @@ public class SelectionHandler extends AnAction implements EditorMouseMotionListe
             });
         }
 
-        EditorTextField codeView = getTextPane(toolWindow);
-        updateView(psiFile, selectedText, codeView);
+        JBPanel panel = getPanel(toolWindow);
+        updateUi(panel);
+        updateView(psiFile, selectedText, (EditorTextField) panel.getComponent(1));
+    }
+
+    private void updateUi(JBPanel panel) {
+        panel.getComponent(0).setVisible(false);
+        panel.getComponent(1).setVisible(true);
     }
 
     @Override
@@ -76,10 +83,10 @@ public class SelectionHandler extends AnAction implements EditorMouseMotionListe
                 && edit.getSelectionModel().getSelectedText().length() > 0;
     }
 
-    private EditorTextField getTextPane(ToolWindow toolWindow) {
+    private JBPanel getPanel(ToolWindow toolWindow) {
         Content content = toolWindow.getContentManager().getContent(0);
         JBScrollPane scrollPane = (JBScrollPane) content.getComponent();
         JBPanel dataPanel = (JBPanel) scrollPane.getViewport().getView();
-        return (EditorTextField) dataPanel.getComponent(0);
+        return dataPanel;
     }
 }

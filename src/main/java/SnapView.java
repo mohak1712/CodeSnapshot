@@ -5,6 +5,7 @@ import com.intellij.openapi.project.Project;
 import com.intellij.ui.components.JBPanel;
 import com.intellij.ui.components.JBScrollPane;
 import com.intellij.ui.components.panels.VerticalLayout;
+import com.intellij.util.ui.JBUI;
 import org.jetbrains.annotations.NotNull;
 
 import javax.imageio.ImageIO;
@@ -16,12 +17,14 @@ import java.io.IOException;
 
 public class SnapView {
     private final JBScrollPane scrollPane;
-    private final CustomTextEditor codeView;
 
     public SnapView(@NotNull Project project) {
         VerticalLayout verticalLayout = new VerticalLayout(20);
-        codeView = new CustomTextEditor("", project, null);
+        CustomTextEditor codeView = new CustomTextEditor("", project, null);
         JBPanel panel = new JBPanel(verticalLayout);
+        JTextPane instructions = new JTextPane();
+        instructions.setMargin(JBUI.insets(20));
+        panel.add(instructions);
         panel.add(codeView);
         panel.add(saveAsLabel());
         panel.withBackground(Color.LIGHT_GRAY);
