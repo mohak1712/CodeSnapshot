@@ -76,13 +76,17 @@ public class SnapView {
         FileSaverDescriptor fileSaverDescriptor = new FileSaverDescriptor("Code Snapshot", "Saves this code as image");
         FileSaverDialog saveFileDialog = FileChooserFactory.getInstance()
                 .createSaveFileDialog(fileSaverDescriptor, (Project) null);
-        VirtualFileWrapper save = saveFileDialog.save(null, "");
+        VirtualFileWrapper fileWrapper = saveFileDialog.save(null, "code.png");
+        if (fileWrapper == null) {
+            //user pressed cancel
+            return;
+        }
 
         BufferedImage image = UIUtil.createImage(codeView, codeView.getWidth(), codeView.getHeight(), BufferedImage.TYPE_INT_ARGB);
         codeView.paint(image.getGraphics());
 
         try {
-            ImageIO.write(image, "png", save.getFile());
+            ImageIO.write(image, "png", fileWrapper.getFile());
         } catch (IOException e) {
             e.printStackTrace();
         }
