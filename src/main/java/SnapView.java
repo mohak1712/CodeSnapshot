@@ -2,10 +2,12 @@ import com.intellij.openapi.fileChooser.FileChooserFactory;
 import com.intellij.openapi.fileChooser.FileSaverDescriptor;
 import com.intellij.openapi.fileChooser.FileSaverDialog;
 import com.intellij.openapi.project.Project;
+import com.intellij.openapi.vfs.VirtualFileWrapper;
 import com.intellij.ui.components.JBPanel;
 import com.intellij.ui.components.JBScrollPane;
 import com.intellij.ui.components.panels.VerticalLayout;
 import com.intellij.util.ui.JBUI;
+import com.intellij.util.ui.UIUtil;
 import org.jetbrains.annotations.NotNull;
 
 import javax.imageio.ImageIO;
@@ -13,14 +15,16 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.image.BufferedImage;
 import java.io.IOException;
 
 public class SnapView {
     private final JBScrollPane scrollPane;
+    private final CustomTextEditor codeView;
 
     public SnapView(@NotNull Project project) {
         VerticalLayout verticalLayout = new VerticalLayout(20);
-        CustomTextEditor codeView = new CustomTextEditor("", project, null);
+        codeView = new CustomTextEditor("", project, null);
         JBPanel panel = new JBPanel(verticalLayout);
         JTextPane instructions = new JTextPane();
         instructions.setMargin(JBUI.insets(20));
@@ -65,11 +69,23 @@ public class SnapView {
     }
 
     private void saveFile() {
-        FileSaverDescriptor fileSaverDescriptor = new FileSaverDescriptor("Code Snapshot", "Saves this code as image",
-                "jpg", "png");
+        if (!codeView.isVisible()) {
+            return;
+        }
+
+        FileSaverDescriptor fileSaverDescriptor = new FileSaverDescriptor("Code Snapshot", "Saves this code as image");
         FileSaverDialog saveFileDialog = FileChooserFactory.getInstance()
                 .createSaveFileDialog(fileSaverDescriptor, (Project) null);
-        saveFileDialog.save(null, "code");
+        VirtualFileWrapper save = saveFileDialog.save(null, "");
+
+        BufferedImage image = UIUtil.createImage(codeView, codeView.getWidth(), codeView.getHeight(), BufferedImage.TYPE_INT_ARGB);
+        codeView.paint(image.getGraphics());
+
+        try {
+            ImageIO.write(image, "png", save.getFile());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public JComponent getComponent() {
