@@ -37,7 +37,7 @@ public class SelectionHandler extends AnAction {
 
         JBPanel panel = getPanel(toolWindow);
         updateUi(panel);
-        updateView(psiFile, selectedText, (EditorTextField) panel.getComponent(1));
+        updateText(psiFile, selectedText, (EditorTextField) panel.getComponent(1));
     }
 
     private void updateViewOnSelectionChanged(@NotNull SelectionEvent e) {
@@ -56,7 +56,7 @@ public class SelectionHandler extends AnAction {
 
         JBPanel panel = getPanel(toolWindow);
         updateUi(panel);
-        updateView(psiFile, selectedText, (EditorTextField) panel.getComponent(1));
+        updateText(psiFile, selectedText, (EditorTextField) panel.getComponent(1));
     }
 
     private void updateUi(JBPanel panel) {
@@ -64,7 +64,7 @@ public class SelectionHandler extends AnAction {
         panel.getComponent(1).setVisible(true);
     }
 
-    private void updateView(PsiFile psiFile, String selectedText, EditorTextField codeView) {
+    private void updateText(PsiFile psiFile, String selectedText, EditorTextField codeView) {
         if (selectedText.startsWith("\n") && selectedText.endsWith("\n"))
             codeView.setText(selectedText);
         else if (selectedText.startsWith("\n"))
