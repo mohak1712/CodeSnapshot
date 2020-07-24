@@ -35,6 +35,7 @@ public class SnapView {
         scrollPane = new JBScrollPane(panel);
         scrollPane.getVerticalScrollBar().setPreferredSize(new Dimension(0, 0));
         scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        scrollPane.setBorder(JBUI.Borders.customLine(Color.LIGHT_GRAY, 20, 30, 20, 30));
     }
 
     private Component saveAsLabel() {
