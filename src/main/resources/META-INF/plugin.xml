@@ -2,12 +2,16 @@
     <id>org.example.code-snapshot</id>
     <name>CodeSnapshot</name>
     <vendor email="mohakpuri1712@gmail.com">Mohak Puri</vendor>
+    <version>1.0.0</version>
 
     <description>
         <![CDATA[
-      This plugin allows you to capture and edit code snip it.
+      This plugin allows you to save your code as an image. By simply selecting your code, you can save you code with
+      proper syntax highlighting. The image adapts to the current setting of your intellij editor like background color.
     ]]>
     </description>
+
+    <change-notes>This is the initial release of the plugin.</change-notes>
 
     <depends>com.intellij.modules.platform</depends>
 
@@ -19,7 +23,7 @@
     <actions>
         <!-- Add your actions here -->
         <action id="SelectorAction" class="SelectionHandler" text="Code Snapshot"
-                description="Creates snapshot for your code">
+                description="Creates snapshot for your code" icon="/icons/action.svg">
             <add-to-group group-id="EditorPopupMenu" anchor="last"/>
         </action>
     </actions>
