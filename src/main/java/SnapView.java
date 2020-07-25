@@ -2,6 +2,7 @@ import com.intellij.openapi.fileChooser.FileChooserFactory;
 import com.intellij.openapi.fileChooser.FileSaverDescriptor;
 import com.intellij.openapi.fileChooser.FileSaverDialog;
 import com.intellij.openapi.project.Project;
+import com.intellij.openapi.util.IconLoader;
 import com.intellij.openapi.vfs.VirtualFileWrapper;
 import com.intellij.ui.components.JBPanel;
 import com.intellij.ui.components.JBScrollPane;
@@ -11,6 +12,7 @@ import com.intellij.util.ui.UIUtil;
 import org.jetbrains.annotations.NotNull;
 
 import javax.imageio.ImageIO;
+import javax.swing.Icon;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
@@ -39,34 +41,29 @@ public class SnapView {
     }
 
     private Component saveAsLabel() {
-        try {
-            Image cameraInitialState = ImageIO.read(getClass().getResource("camera_initial.png"));
-            Image cameraFinalState = ImageIO.read(getClass().getResource("camera_final.png"));
-            JLabel saveAsLabel = new JLabel(new ImageIcon(cameraInitialState));
-            saveAsLabel.addMouseListener(new MouseAdapter() {
-                @Override
-                public void mouseEntered(MouseEvent e) {
-                    super.mouseEntered(e);
-                    saveAsLabel.setIcon(new ImageIcon(cameraFinalState));
-                }
+        Icon cameraInitialState = IconLoader.getIcon("icons/camera_initial.svg");
+        Icon cameraFinalState = IconLoader.getIcon("icons/camera_final.svg");
+        JLabel saveAsLabel = new JLabel(cameraInitialState);
+        saveAsLabel.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                super.mouseEntered(e);
+                saveAsLabel.setIcon(cameraFinalState);
+            }
 
-                @Override
-                public void mouseExited(MouseEvent e) {
-                    super.mouseExited(e);
-                    saveAsLabel.setIcon(new ImageIcon(cameraInitialState));
-                }
+            @Override
+            public void mouseExited(MouseEvent e) {
+                super.mouseExited(e);
+                saveAsLabel.setIcon(cameraInitialState);
+            }
 
-                @Override
-                public void mouseClicked(MouseEvent e) {
-                    saveFile();
-                }
-            });
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                saveFile();
+            }
+        });
 
-            return saveAsLabel;
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return new JLabel();
+        return saveAsLabel;
     }
 
     private void saveFile() {
