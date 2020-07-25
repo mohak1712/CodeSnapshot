@@ -37,6 +37,7 @@ public class SnapToolWindow implements ToolWindowFactory {
     private void formatText(JTextPane textPane) {
         textPane.setBackground(new Color(60, 63, 65));
         textPane.setFont(new Font("Monospaced", Font.PLAIN, 14));
+        textPane.setEditable(false);
         StyledDocument doc = textPane.getStyledDocument();
 
         Style keywordStyle = textPane.addStyle("keyword", null);
