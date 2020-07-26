@@ -1,8 +1,8 @@
 <idea-plugin>
-    <id>org.example.code-snapshot</id>
+    <id>com.mohak1712.code-snapshot</id>
     <name>CodeSnapshot</name>
     <vendor email="mohakpuri1712@gmail.com">Mohak Puri</vendor>
-    <version>1.0.0</version>
+    <version>1.0</version>
 
     <description>
         <![CDATA[
@@ -11,7 +11,11 @@
     ]]>
     </description>
 
-    <change-notes>This is the initial release of the plugin.</change-notes>
+    <change-notes>
+        <![CDATA[
+      This is the initial release of the plugin
+    ]]>
+    </change-notes>
 
     <depends>com.intellij.modules.platform</depends>
 
