@@ -16,6 +16,7 @@ dependencies {
     implementation 'org.jetbrains:annotations:15.0'
 }
 
-intellij {
-    version '2019.3.1'
+patchPluginXml {
+    sinceBuild '193'
+    untilBuild '202.*'
 }
