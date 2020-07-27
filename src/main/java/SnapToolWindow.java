@@ -59,12 +59,10 @@ public class SnapToolWindow implements ToolWindowFactory {
 
     private List<String> getInstructions() {
         List<String> instructions = new ArrayList<>();
-        instructions.add("print(\"************* CODE SNAPSHOT *********************\")");
         instructions.add("print(\"1. Select some text in editor\")");
         instructions.add("print(\"2. Right click and select `Code Snapshot`\")");
-        instructions.add("print(\"3. Drag mouse to change selection\")");
+        instructions.add("print(\"3. Drag mouse or use keyboard to change selection\")");
         instructions.add("print(\"4. Click on camera to save as image\")");
-        instructions.add("print(\"************************************************\")");
         return instructions;
     }
 
