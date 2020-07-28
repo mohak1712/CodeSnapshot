@@ -13,6 +13,9 @@ The image adapts to the current setting of your intellij editor like background 
 4. Click on camera to save
 5. Select image name, location and done !
 
+## Link
+[Code Snapshot](https://plugins.jetbrains.com/plugin/14775-codesnapshot)
+
 ## Credits
 
 Thank you [photo3idea-studio](https://www.flaticon.com/authors/photo3idea-studio), [freepik](https://www.flaticon.com/authors/freepik) for the icons
