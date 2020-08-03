@@ -5,10 +5,12 @@ import com.intellij.openapi.actionSystem.PlatformDataKeys;
 import com.intellij.openapi.editor.Editor;
 import com.intellij.openapi.editor.event.SelectionEvent;
 import com.intellij.openapi.editor.event.SelectionListener;
+import com.intellij.openapi.editor.impl.EditorImpl;
 import com.intellij.openapi.wm.ToolWindow;
 import com.intellij.openapi.wm.ToolWindowManager;
 import com.intellij.psi.PsiDocumentManager;
 import com.intellij.psi.PsiFile;
+import com.intellij.psi.PsiFileFactory;
 import com.intellij.ui.EditorTextField;
 import com.intellij.ui.components.JBPanel;
 import com.intellij.ui.components.JBScrollPane;
@@ -65,16 +67,9 @@ public class SelectionHandler extends AnAction {
     }
 
     private void updateText(PsiFile psiFile, String selectedText, EditorTextField codeView) {
-        if (selectedText.startsWith("\n") && selectedText.endsWith("\n"))
-            codeView.setText(selectedText);
-        else if (selectedText.startsWith("\n"))
-            codeView.setText(selectedText + "\n");
-        else if (selectedText.endsWith("\n"))
-            codeView.setText("\n" + selectedText);
-        else
-            codeView.setText("\n" + selectedText + "\n");
-
-        codeView.setFileType(psiFile.getFileType());
+        PsiFile selectedTextAsPsi = PsiFileFactory.getInstance(codeView.getProject())
+                .createFileFromText("", psiFile.getLanguage(), selectedText);
+        codeView.setDocument(selectedTextAsPsi.getViewProvider().getDocument());
     }
 
     @Override

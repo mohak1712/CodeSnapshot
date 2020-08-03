@@ -12,7 +12,6 @@ import com.intellij.util.ui.UIUtil;
 import org.jetbrains.annotations.NotNull;
 
 import javax.imageio.ImageIO;
-import javax.swing.Icon;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
@@ -30,7 +29,6 @@ public class SnapView {
         JBPanel panel = new JBPanel(verticalLayout);
         JTextPane instructions = new JTextPane();
         instructions.setMargin(JBUI.insets(20));
-        instructions.setMinimumSize(new Dimension(80,240));
         panel.add(instructions);
         panel.add(codeView);
         panel.add(saveAsLabel());
