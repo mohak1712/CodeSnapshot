@@ -24,23 +24,23 @@ Thank you [photo3idea-studio](https://www.flaticon.com/authors/photo3idea-studio
 
 1. [_**MONOKAI PRO**_](https://plugins.jetbrains.com/plugin/12571-monokai-materialized-color-scheme)
 
-![monokai](https://user-images.githubusercontent.com/12782512/88475339-812e9800-cf4c-11ea-8205-c623154f028a.png)
+![monokai](https://user-images.githubusercontent.com/12782512/93019402-64314f80-f5f4-11ea-80aa-61004d8fe363.png)
 
 2. [**_DRACULA_**](https://github.com/dracula/jetbrains)
 
-![dracula](https://user-images.githubusercontent.com/12782512/88475340-81c72e80-cf4c-11ea-9360-2069e1c09599.png)
+![dracula](https://user-images.githubusercontent.com/12782512/93019343-fb49d780-f5f3-11ea-9ba1-c4579a8afa89.png)
 
 3. [_**SOLARIZED_DARK**_](https://plugins.jetbrains.com/plugin/12112-solarized-theme)
 
-![solarized_dark](https://user-images.githubusercontent.com/12782512/88475336-7d027a80-cf4c-11ea-87fe-017740178ac5.png)
+![solarized_dark](https://user-images.githubusercontent.com/12782512/93019496-f6d1ee80-f5f4-11ea-9ffa-b00dc1764094.png)
 
 4. [**_GRUVBOX_DARK_**](https://plugins.jetbrains.com/plugin/12310-gruvbox-theme)
 
-![gruvbox_dark](https://user-images.githubusercontent.com/12782512/88475338-7ffd6b00-cf4c-11ea-93d4-c4d36e6f4e84.png)
+![gruvbox_dark](https://user-images.githubusercontent.com/12782512/93019533-37316c80-f5f5-11ea-9417-2fd0f1a0f241.png)
 
 5. [**_DEFAULT_**](https://plugins.jetbrains.com/plugin/12697-intellij-light-theme)
 
-![default](https://user-images.githubusercontent.com/12782512/88475341-825fc500-cf4c-11ea-9bd3-8280331fdd1a.png)
+![default](https://user-images.githubusercontent.com/12782512/93019573-824b7f80-f5f5-11ea-9389-1352ee386024.png)
 
 
 ## LICENSE
