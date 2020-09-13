@@ -2,7 +2,7 @@
     <id>com.mohak1712.code-snapshot</id>
     <name>CodeSnapshot</name>
     <vendor email="mohakpuri1712@gmail.com">Mohak Puri</vendor>
-    <version>1.0.1</version>
+    <version>1.0.2</version>
 
     <description>
         <![CDATA[
@@ -13,7 +13,7 @@
 
     <change-notes>
         <![CDATA[
-      This is the initial release of the plugin
+      Updates highlighting, filter out specific highlighting events
     ]]>
     </change-notes>
 
